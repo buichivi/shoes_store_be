@@ -1,0 +1,14 @@
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:" "@127.0.0.1/shoes_store"
+SECRET_KEY = "shoes_store"
+CORS_HEADERS = "Content-Type"
+SESSION_COOKIE_SAMESITE = "None"
+REMEMBER_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+REMEMBER_COOKIE_SECURE = True
+REMEMBER_COOKIE_NAME = "remember_me"  # This is the default name
+MAIL_SERVER = "smtp.gmail.com"
+MAIL_PORT = 465
+MAIL_USERNAME = "buivi04062002@gmail.com"
+MAIL_PASSWORD = "dafojlmacqtyzzvu"
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
