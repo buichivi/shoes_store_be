@@ -1,9 +1,7 @@
 import config
-import firebase_admin
 from admin.models import *
 from database import db
-from firebase_admin import credentials
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect
 from flask_admin import Admin
 from flask_cors import CORS
 from flask_login import LoginManager
@@ -69,9 +67,7 @@ def after_request(response):
     if not "Access-Control-Allow-Credentials" in response.headers:
         response.headers.add("Access-Control-Allow-Credentials", "true")
     if not "Access-Control-Allow-Origin" in response.headers:
-        response.headers.add(
-            "Access-Control-Allow-Origin", "*"
-        )
+        response.headers.add("Access-Control-Allow-Origin", "*")
     if not "Access-Control-Allow-Headers" in response.headers:
         response.headers.add(
             "Access-Control-Allow-Headers", "Access-Control-Allow-Headers, content-type"
@@ -158,8 +154,6 @@ def send_email(subject, sender, recipients, body):
 
 def insert_order_statuses():
     # Thêm các trạng thái cho đơn hàng vào cơ sở dữ liệu
-    db.session.execute(text("ALTER TABLE tb_order_status AUTO_INCREMENT = 1"))
-    db.session.commit()
     order_statuses = [
         {"name": "Pending"},
         {"name": "Processing"},
