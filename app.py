@@ -70,7 +70,7 @@ def after_request(response):
         response.headers.add("Access-Control-Allow-Credentials", "true")
     if not "Access-Control-Allow-Origin" in response.headers:
         response.headers.add(
-            "Access-Control-Allow-Origin", "http://localhost:5173"
+            "Access-Control-Allow-Origin", "*"
         )
     if not "Access-Control-Allow-Headers" in response.headers:
         response.headers.add(
