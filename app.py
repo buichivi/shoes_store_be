@@ -3,6 +3,7 @@ from admin.models import *
 from database import db
 from flask import Flask, redirect
 from flask_admin import Admin
+from flask_ckeditor import CKEditor
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_mail import Mail, Message
@@ -17,7 +18,6 @@ from services.review import *
 from services.shoe_type import *
 from services.slider import *
 from services.user import *
-from sqlalchemy.sql import text
 
 app = Flask(__name__)
 app.config.from_object(config)
@@ -31,13 +31,13 @@ api = Api(app)
 # CORS
 CORS(app=app, supports_credentials=True)
 
-# firebase
-
+# CKeditor
+ckeditor = CKEditor(app)
 
 # Mailing
 mail = Mail(app)
 
-admin = Admin(app, template_mode="bootstrap3")
+admin = Admin(app, template_mode="bootstrap4")
 
 admin.add_view(UserView(User, db.session))
 admin.add_view(BrandView(Brand, db.session))
