@@ -8,16 +8,15 @@ from flask import redirect
 from flask_admin import BaseView, expose
 from flask_admin.contrib.sqla import ModelView, fields
 from flask_admin.form import ImageUploadField, Select2Widget
-from flask_ckeditor import CKEditorField
 from flask_login import current_user, login_required, logout_user
 from markupsafe import Markup
+from werkzeug.security import generate_password_hash
+from wtforms import SelectField
+
 from models.brand import Brand
 from models.order_status import OrderStatus
 from models.product import Product
 from models.shoe_type import ShoeType
-from werkzeug.security import generate_password_hash
-from wtforms import SelectField, TextAreaField
-from wtforms.widgets import TextArea
 
 cred = credentials.Certificate(
     {
@@ -36,17 +35,6 @@ cred = credentials.Certificate(
 )
 firebase_admin.initialize_app(cred, {"storageBucket": "shoes-store-4cb03.appspot.com"})
 bucket = storage.bucket()
-
-
-class CKTextAreaWidget(TextArea):
-    def __call__(self, field, **kwargs):
-        kwargs.setdefault("class_", "ckeditor")
-        return super(CKTextAreaWidget, self).__call__(field, **kwargs)
-
-
-class CKTextAreaField(TextAreaField):
-    widget = CKTextAreaWidget()
-
 
 def delete_image(image_url):
     try:
