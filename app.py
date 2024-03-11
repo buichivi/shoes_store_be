@@ -3,7 +3,6 @@ from admin.models import *
 from database import db
 from flask import Flask, redirect
 from flask_admin import Admin
-from flask_ckeditor import CKEditor
 from flask_cors import CORS
 from flask_login import LoginManager
 from flask_mail import Mail, Message
@@ -30,9 +29,6 @@ api = Api(app)
 
 # CORS
 CORS(app=app, supports_credentials=True)
-
-# CKeditor
-ckeditor = CKEditor(app)
 
 # Mailing
 mail = Mail(app)
