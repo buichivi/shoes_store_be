@@ -55,7 +55,6 @@ pyparsing
 pypiwin32
 python-dateutil
 pytz
-pywin32
 PyYAML
 requests
 rsa
